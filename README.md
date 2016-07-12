@@ -1,4 +1,4 @@
-$frontend-nanodegree-arcade-game
+frontend-nanodegree-arcade-game
 ========
 
 A frogger-style arcade game where the player must reach the river without colliding with any bugs. Use directional keys to move the player.
