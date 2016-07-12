@@ -19,3 +19,8 @@ Installation
 view project::
 
 go to https://reecealanboyd.github.io/frontend-nanodegree-arcade-game
+
+Future Goals
+------------
+
+I would like to use my knowledge gained of HTML canvas and Object oriented javascript to make a more complex game later.

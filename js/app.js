@@ -25,14 +25,13 @@ Enemy.prototype.update = function(dt) {
 
     // if enemy collides with the player, reset the player's location 
     if (this.didCollideWithPlayer()) {
-        player.x = 200;
-        player.y = 400;
+        player.reset();
     }
 
     // recycles buggies in potentially different lanes with potentially different speeds
     // and at potentially different head starts
-    if(this.x > 500){
-        this.x = Math.floor(Math.random() * -500); 
+    if (this.x > 500) {
+        this.x = Math.floor(Math.random() * -500);
         console.log(this.x);
         this.y = (Math.floor(Math.random() * 3) * 80) + 60;
         console.log(this.y);
@@ -40,9 +39,9 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
-Enemy.prototype.didCollideWithPlayer = function() {
-    if (this.x > player.x - 100 && this.x < player.x + 100) {
-        if (this.y > player.y - 20 && this.y < player.y + 20) {
+Enemy.prototype.didCollideWithPlayer = function(player) {
+    if (this.x > player.x - 50 && this.x < player.x + 50) {
+        if (this.y > player.y - 50 && this.y < player.y + 50) {
             return true;
         }
     }
@@ -71,8 +70,7 @@ var Player = function() {
 Player.prototype.update = function(dt) {
     // if player ever reaches the top row of the game map, reset the player's location
     if (this.y <= 0) {
-        this.x = 200;
-        this.y = 400;
+        player.reset();
     }
 };
 
@@ -82,24 +80,29 @@ Player.prototype.render = function(dt) {
 };
 
 Player.prototype.handleInput = function(key) {
-    if (key == 'left' && this.x > 0) {
+    if (key === 'left' && this.x > 0) {
         this.x -= 100;
     }
-    if (key == 'right' && this.x < 400) {
+    if (key === 'right' && this.x < 400) {
         this.x += 100;
     }
-    if (key == 'down' && this.y < 400) {
+    if (key === 'down' && this.y < 400) {
         this.y += 82;
     }
-    if (key == 'up') {
+    if (key === 'up') {
         this.y -= 82;
     }
+};
+
+player.prototype.reset = function() {
+    this.x = 200;
+    this.y = 400;
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-for (var i = 0; i < 5; i ++) {
+for (var i = 0; i < 5; i++) {
     var enemy = new Enemy();
     allEnemies.push(enemy);
 }
