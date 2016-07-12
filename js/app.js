@@ -24,7 +24,7 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
 
     // if enemy collides with the player, reset the player's location 
-    if (this.didCollideWithPlayer()) {
+    if (this.didCollideWithPlayer(player)) {
         player.reset();
     }
 
@@ -70,7 +70,7 @@ var Player = function() {
 Player.prototype.update = function(dt) {
     // if player ever reaches the top row of the game map, reset the player's location
     if (this.y <= 0) {
-        player.reset();
+        this.reset();
     }
 };
 
@@ -94,7 +94,7 @@ Player.prototype.handleInput = function(key) {
     }
 };
 
-player.prototype.reset = function() {
+Player.prototype.reset = function() {
     this.x = 200;
     this.y = 400;
 };
