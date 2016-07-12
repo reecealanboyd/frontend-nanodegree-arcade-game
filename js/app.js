@@ -41,7 +41,7 @@ Enemy.prototype.update = function(dt) {
 };
 
 Enemy.prototype.didCollideWithPlayer = function() {
-    if (this.x > player.x - 30 && this.x < player.x + 30) {
+    if (this.x > player.x - 50 && this.x < player.x + 50) {
         if (this.y > player.y - 20 && this.y < player.y + 20) {
             return true;
         }
